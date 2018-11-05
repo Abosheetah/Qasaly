@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="36865147d402461e8b7cd3a7b94f1132" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="TamerQasalyDBModel.ActualProductivity" Width="1.5" PointX="8.25" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.CalculationMethod" Width="1.5" PointX="3.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.DependencyEquipment" Width="1.5" PointX="1.5" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.Equipment" Width="1.5" PointX="3.75" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.EquipmentDefaultMeasurementType" Width="1.5" PointX="3.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.EquipmentDefaultMeasurementType_Equipment" Width="1.5" PointX="6" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.EquipmentType" Width="1.5" PointX="1.5" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.MainRepository" Width="1.5" PointX="7.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.Office_Career" Width="1.5" PointX="1.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.Office_CareerType" Width="1.5" PointX="1.125" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.Office_Employee" Width="1.5" PointX="3.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.OperationCareer" Width="1.5" PointX="3.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.OperationEmployee" Width="1.5" PointX="3.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.OperationEmployeeCareer" Width="1.5" PointX="6" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.OperationEquipment" Width="1.5" PointX="6" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.OperationGeneralData" Width="1.5" PointX="3.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.OperationProductivity" Width="1.5" PointX="9" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.OperationReopsitory" Width="1.5" PointX="10.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.OperationRepositoryData" Width="1.5" PointX="8.25" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.OrderStatu" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.ProcurementOfficial" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.Product" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.ProductCategory" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.ProductivityType" Width="1.5" PointX="6.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.PurchaseOrder" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.PurchaseOrderItem" Width="1.5" PointX="13.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.RunTime" Width="1.5" PointX="8.25" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.SupplierCategory" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.Supplier" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.sysdiagram" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.TempPurchaseOrder" Width="1.5" PointX="8.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TamerQasalyDBModel.TempPurchaseOrderItem" Width="1.5" PointX="10.5" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_ActualProductivity_OperationEquipment" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_OperationEquipment_CalculationMethod" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_Equipment_DependencyEquipment" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_Equipment_EquipmentType" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_EquipmentDefaultMeasurementType_Equipment_Equipment" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_OperationEquipment_Equipment" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_EquipmentDefaultMeasurementType_Equipment_EquipmentDefaultMeasurementType" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_MainRepository_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_Office_Career_Office_CareerType" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_Office_Employee_Office_Career" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_ProcurementOfficials_Office_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_OperationEmployeeCareer_OperationCareer" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_OperationEmployeeCareer_OperationEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_OperationEmployeeCareer_OperationGeneralData" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_OperationRepositoryData_OperationEmployeeCareer" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_OperationEquipment_OperationGeneralData" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_RunTimes_OperationEquipment" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_OperationProductivity_OperationGeneralData" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_OperationProductivity_ProductivityType" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_OperationReopsitory_OperationRepositoryData" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_OperationReopsitory_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_PurchaseOrder_OrderStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_TempPurchaseOrder_OrderStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_PurchaseOrder_ProcurementOfficials" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_TempPurchaseOrder_ProcurementOfficials" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_Product_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_Product_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_PurchaseOrderItems_Product1" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_TempPurchaseOrderItems_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_PurchaseOrder_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_PurchaseOrderItems_PurchaseOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_Suppliers_SupplierCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_TempPurchaseOrder_Suppliers" ManuallyRouted="false" />
+        <AssociationConnector Association="TamerQasalyDBModel.FK_TempPurchaseOrderItems_TempPurchaseOrder" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

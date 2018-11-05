@@ -1,0 +1,2463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TamerQasalyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActualProductivity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperationEquipmentID" Type="int" />
+          <Property Name="Measurement" Type="nvarchar" MaxLength="50" />
+          <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalUnitProductivity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ForfeitAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DesciptionForfeitAmount" Type="ntext" />
+          <Property Name="NetAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TransactionDate" Type="datetime" />
+          <Property Name="TransactionTime" Type="time" Precision="7" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="CalculationMethod">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="DependencyEquipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="EquipmentTypeID" Type="smallint" />
+          <Property Name="DependencyID" Type="smallint" />
+          <Property Name="Code" Type="nvarchar" MaxLength="18" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="18" />
+          <Property Name="Model" Type="nvarchar" MaxLength="10" />
+          <Property Name="ChassisNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EquipmentDefaultMeasurementType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="EquipmentDefaultMeasurementType_Equipment">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+            <PropertyRef Name="EquipmentDefaultMeasurementTypeID" />
+          </Key>
+          <Property Name="EquipmentID" Type="int" Nullable="false" />
+          <Property Name="EquipmentDefaultMeasurementTypeID" Type="smallint" Nullable="false" />
+          <Property Name="Measure1" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Measure2" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Measure3" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Measure4" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EquipmentType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="MainRepository">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Office_Career">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CareerTypeID" Type="smallint" />
+          <Property Name="isSysUser" Type="bit" />
+          <Property Name="isSysAdmin" Type="bit" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Office_CareerType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Office_Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CareerID" Type="smallint" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="NationalNumber" Type="nvarchar" MaxLength="14" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="Salary" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Photo" Type="image" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="OperationCareer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Decription" Type="ntext" />
+        </EntityType>
+        <EntityType Name="OperationEmployee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="NationalNumber" Type="nvarchar" MaxLength="14" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="Salary" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="OperationEmployeeCareer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GeneralDataID" Type="int" />
+          <Property Name="Employee" Type="smallint" />
+          <Property Name="Career" Type="smallint" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OperationEquipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="OperationID" Type="int" />
+          <Property Name="EquipmentID" Type="int" />
+          <Property Name="CalculationMethodID" Type="smallint" />
+          <Property Name="AgreementDate" Type="datetime" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="Decription" Type="ntext" />
+        </EntityType>
+        <EntityType Name="OperationGeneralData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperationName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="OperaionLocation" Type="nvarchar" MaxLength="200" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="OperationProductivity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperationGeneralDataID" Type="int" />
+          <Property Name="ProductivityTypeID" Type="smallint" />
+          <Property Name="EngineeringAssessment1" Type="nvarchar" MaxLength="50" />
+          <Property Name="EngineeringAssessment2" Type="nvarchar" MaxLength="50" />
+          <Property Name="EngineeringAssessment3" Type="nvarchar" MaxLength="50" />
+          <Property Name="EngineeringAssessment4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="OperationReopsitory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RepoID" Type="int" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Quantity" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OperationRepositoryData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="StorekeeperID" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="ProcurementOfficials">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="smallint" Nullable="false" />
+          <Property Name="AddedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="15" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="15" />
+          <Property Name="ProductCategoryID" Type="smallint" />
+          <Property Name="ProductionCompanyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DefaultSupplierID" Type="int" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="ProductivityType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierID" Type="int" />
+          <Property Name="OrderStatusID" Type="smallint" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="ProcurementOfficialsID" Type="smallint" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderItems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseOrderID" Type="int" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Quantity" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="RunTimes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperationEquipmentID" Type="int" />
+          <Property Name="CurrentDate" Type="datetime" />
+          <Property Name="StartTime" Type="time" Precision="7" />
+          <Property Name="EndTime" Type="time" Precision="7" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="SupplierCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Suppliers">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+          <Property Name="SupplierCategoryID" Type="smallint" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="ContactName" Type="varchar" MaxLength="40" />
+          <Property Name="ContactNationalNumber" Type="nchar" MaxLength="14" />
+          <Property Name="ContactTitle" Type="varchar" MaxLength="40" />
+          <Property Name="Address" Type="varchar" MaxLength="40" />
+          <Property Name="City" Type="varchar" MaxLength="40" />
+          <Property Name="Phone" Type="varchar" MaxLength="40" />
+          <Property Name="Fax" Type="varchar" MaxLength="40" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="RemainderAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DateRemainderAmount" Type="varchar" MaxLength="40" />
+          <Property Name="MAXDebtAmount" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TempPurchaseOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierID" Type="int" />
+          <Property Name="OrderStatusID" Type="smallint" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="ProcurementOfficialsID" Type="smallint" />
+          <Property Name="Description" Type="ntext" />
+        </EntityType>
+        <EntityType Name="TempPurchaseOrderItems">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseOrderID" Type="int" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Quantity" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <Association Name="FK_ActualProductivity_OperationEquipment">
+          <End Role="OperationEquipment" Type="Self.OperationEquipment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ActualProductivity" Type="Self.ActualProductivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationEquipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActualProductivity">
+              <PropertyRef Name="OperationEquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_DependencyEquipment">
+          <End Role="DependencyEquipment" Type="Self.DependencyEquipment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DependencyEquipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="DependencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_EquipmentType">
+          <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="EquipmentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentDefaultMeasurementType_Equipment_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EquipmentDefaultMeasurementType_Equipment" Type="Self.EquipmentDefaultMeasurementType_Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EquipmentDefaultMeasurementType_Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentDefaultMeasurementType_Equipment_EquipmentDefaultMeasurementType">
+          <End Role="EquipmentDefaultMeasurementType" Type="Self.EquipmentDefaultMeasurementType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EquipmentDefaultMeasurementType_Equipment" Type="Self.EquipmentDefaultMeasurementType_Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentDefaultMeasurementType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EquipmentDefaultMeasurementType_Equipment">
+              <PropertyRef Name="EquipmentDefaultMeasurementTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainRepository_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MainRepository" Type="Self.MainRepository" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MainRepository">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Office_Career_Office_CareerType">
+          <End Role="Office_CareerType" Type="Self.Office_CareerType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Office_Career" Type="Self.Office_Career" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office_CareerType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Office_Career">
+              <PropertyRef Name="CareerTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Office_Employee_Office_Career">
+          <End Role="Office_Career" Type="Self.Office_Career" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Office_Employee" Type="Self.Office_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office_Career">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Office_Employee">
+              <PropertyRef Name="CareerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationEmployeeCareer_OperationCareer">
+          <End Role="OperationCareer" Type="Self.OperationCareer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationEmployeeCareer" Type="Self.OperationEmployeeCareer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationCareer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationEmployeeCareer">
+              <PropertyRef Name="Career" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationEmployeeCareer_OperationEmployee">
+          <End Role="OperationEmployee" Type="Self.OperationEmployee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationEmployeeCareer" Type="Self.OperationEmployeeCareer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationEmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationEmployeeCareer">
+              <PropertyRef Name="Employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationEmployeeCareer_OperationGeneralData">
+          <End Role="OperationGeneralData" Type="Self.OperationGeneralData" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationEmployeeCareer" Type="Self.OperationEmployeeCareer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationGeneralData">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationEmployeeCareer">
+              <PropertyRef Name="GeneralDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationEquipment_CalculationMethod">
+          <End Role="CalculationMethod" Type="Self.CalculationMethod" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationEquipment" Type="Self.OperationEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CalculationMethod">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationEquipment">
+              <PropertyRef Name="CalculationMethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationEquipment_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationEquipment" Type="Self.OperationEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationEquipment">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationEquipment_OperationGeneralData">
+          <End Role="OperationGeneralData" Type="Self.OperationGeneralData" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationEquipment" Type="Self.OperationEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationGeneralData">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationEquipment">
+              <PropertyRef Name="OperationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationProductivity_OperationGeneralData">
+          <End Role="OperationGeneralData" Type="Self.OperationGeneralData" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationProductivity" Type="Self.OperationProductivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationGeneralData">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationProductivity">
+              <PropertyRef Name="OperationGeneralDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationProductivity_ProductivityType">
+          <End Role="ProductivityType" Type="Self.ProductivityType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationProductivity" Type="Self.OperationProductivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductivityType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationProductivity">
+              <PropertyRef Name="ProductivityTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationReopsitory_OperationRepositoryData">
+          <End Role="OperationRepositoryData" Type="Self.OperationRepositoryData" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationReopsitory" Type="Self.OperationReopsitory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationRepositoryData">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationReopsitory">
+              <PropertyRef Name="RepoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationReopsitory_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationReopsitory" Type="Self.OperationReopsitory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationReopsitory">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationRepositoryData_OperationEmployeeCareer">
+          <End Role="OperationEmployeeCareer" Type="Self.OperationEmployeeCareer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationRepositoryData" Type="Self.OperationRepositoryData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationEmployeeCareer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationRepositoryData">
+              <PropertyRef Name="StorekeeperID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcurementOfficials_Office_Employee">
+          <End Role="Office_Employee" Type="Self.Office_Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProcurementOfficials" Type="Self.ProcurementOfficials" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Office_Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProcurementOfficials">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Suppliers">
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="DefaultSupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_ProcurementOfficials">
+          <End Role="ProcurementOfficials" Type="Self.ProcurementOfficials" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcurementOfficials">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="ProcurementOfficialsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_Suppliers">
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderItems_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PurchaseOrderItems" Type="Self.PurchaseOrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PurchaseOrderItems">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderItems_PurchaseOrder">
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
+          <End Role="PurchaseOrderItems" Type="Self.PurchaseOrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PurchaseOrderItems">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RunTimes_OperationEquipment">
+          <End Role="OperationEquipment" Type="Self.OperationEquipment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RunTimes" Type="Self.RunTimes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationEquipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RunTimes">
+              <PropertyRef Name="OperationEquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Suppliers_SupplierCategory">
+          <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Suppliers">
+              <PropertyRef Name="SupplierCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempPurchaseOrder_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TempPurchaseOrder" Type="Self.TempPurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TempPurchaseOrder">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempPurchaseOrder_ProcurementOfficials">
+          <End Role="ProcurementOfficials" Type="Self.ProcurementOfficials" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TempPurchaseOrder" Type="Self.TempPurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcurementOfficials">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="TempPurchaseOrder">
+              <PropertyRef Name="ProcurementOfficialsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempPurchaseOrder_Suppliers">
+          <End Role="Suppliers" Type="Self.Suppliers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TempPurchaseOrder" Type="Self.TempPurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="TempPurchaseOrder">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempPurchaseOrderItems_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TempPurchaseOrderItems" Type="Self.TempPurchaseOrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TempPurchaseOrderItems">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempPurchaseOrderItems_TempPurchaseOrder">
+          <End Role="TempPurchaseOrder" Type="Self.TempPurchaseOrder" Multiplicity="0..1" />
+          <End Role="TempPurchaseOrderItems" Type="Self.TempPurchaseOrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TempPurchaseOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TempPurchaseOrderItems">
+              <PropertyRef Name="PurchaseOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TamerQasalyDBModelStoreContainer">
+          <EntitySet Name="ActualProductivity" EntityType="Self.ActualProductivity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CalculationMethod" EntityType="Self.CalculationMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DependencyEquipment" EntityType="Self.DependencyEquipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentDefaultMeasurementType" EntityType="Self.EquipmentDefaultMeasurementType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentDefaultMeasurementType_Equipment" EntityType="Self.EquipmentDefaultMeasurementType_Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentType" EntityType="Self.EquipmentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MainRepository" EntityType="Self.MainRepository" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Office_Career" EntityType="Self.Office_Career" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Office_CareerType" EntityType="Self.Office_CareerType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Office_Employee" EntityType="Self.Office_Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationCareer" EntityType="Self.OperationCareer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationEmployee" EntityType="Self.OperationEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationEmployeeCareer" EntityType="Self.OperationEmployeeCareer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationEquipment" EntityType="Self.OperationEquipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationGeneralData" EntityType="Self.OperationGeneralData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationProductivity" EntityType="Self.OperationProductivity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationReopsitory" EntityType="Self.OperationReopsitory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationRepositoryData" EntityType="Self.OperationRepositoryData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcurementOfficials" EntityType="Self.ProcurementOfficials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductivityType" EntityType="Self.ProductivityType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrderItems" EntityType="Self.PurchaseOrderItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RunTimes" EntityType="Self.RunTimes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierCategory" EntityType="Self.SupplierCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suppliers" EntityType="Self.Suppliers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TempPurchaseOrder" EntityType="Self.TempPurchaseOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TempPurchaseOrderItems" EntityType="Self.TempPurchaseOrderItems" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ActualProductivity_OperationEquipment" Association="Self.FK_ActualProductivity_OperationEquipment">
+            <End Role="OperationEquipment" EntitySet="OperationEquipment" />
+            <End Role="ActualProductivity" EntitySet="ActualProductivity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_DependencyEquipment" Association="Self.FK_Equipment_DependencyEquipment">
+            <End Role="DependencyEquipment" EntitySet="DependencyEquipment" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_EquipmentType" Association="Self.FK_Equipment_EquipmentType">
+            <End Role="EquipmentType" EntitySet="EquipmentType" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentDefaultMeasurementType_Equipment_Equipment" Association="Self.FK_EquipmentDefaultMeasurementType_Equipment_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="EquipmentDefaultMeasurementType_Equipment" EntitySet="EquipmentDefaultMeasurementType_Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentDefaultMeasurementType_Equipment_EquipmentDefaultMeasurementType" Association="Self.FK_EquipmentDefaultMeasurementType_Equipment_EquipmentDefaultMeasurementType">
+            <End Role="EquipmentDefaultMeasurementType" EntitySet="EquipmentDefaultMeasurementType" />
+            <End Role="EquipmentDefaultMeasurementType_Equipment" EntitySet="EquipmentDefaultMeasurementType_Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainRepository_Product" Association="Self.FK_MainRepository_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="MainRepository" EntitySet="MainRepository" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Office_Career_Office_CareerType" Association="Self.FK_Office_Career_Office_CareerType">
+            <End Role="Office_CareerType" EntitySet="Office_CareerType" />
+            <End Role="Office_Career" EntitySet="Office_Career" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Office_Employee_Office_Career" Association="Self.FK_Office_Employee_Office_Career">
+            <End Role="Office_Career" EntitySet="Office_Career" />
+            <End Role="Office_Employee" EntitySet="Office_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationEmployeeCareer_OperationCareer" Association="Self.FK_OperationEmployeeCareer_OperationCareer">
+            <End Role="OperationCareer" EntitySet="OperationCareer" />
+            <End Role="OperationEmployeeCareer" EntitySet="OperationEmployeeCareer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationEmployeeCareer_OperationEmployee" Association="Self.FK_OperationEmployeeCareer_OperationEmployee">
+            <End Role="OperationEmployee" EntitySet="OperationEmployee" />
+            <End Role="OperationEmployeeCareer" EntitySet="OperationEmployeeCareer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationEmployeeCareer_OperationGeneralData" Association="Self.FK_OperationEmployeeCareer_OperationGeneralData">
+            <End Role="OperationGeneralData" EntitySet="OperationGeneralData" />
+            <End Role="OperationEmployeeCareer" EntitySet="OperationEmployeeCareer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationEquipment_CalculationMethod" Association="Self.FK_OperationEquipment_CalculationMethod">
+            <End Role="CalculationMethod" EntitySet="CalculationMethod" />
+            <End Role="OperationEquipment" EntitySet="OperationEquipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationEquipment_Equipment" Association="Self.FK_OperationEquipment_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="OperationEquipment" EntitySet="OperationEquipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationEquipment_OperationGeneralData" Association="Self.FK_OperationEquipment_OperationGeneralData">
+            <End Role="OperationGeneralData" EntitySet="OperationGeneralData" />
+            <End Role="OperationEquipment" EntitySet="OperationEquipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationProductivity_OperationGeneralData" Association="Self.FK_OperationProductivity_OperationGeneralData">
+            <End Role="OperationGeneralData" EntitySet="OperationGeneralData" />
+            <End Role="OperationProductivity" EntitySet="OperationProductivity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationProductivity_ProductivityType" Association="Self.FK_OperationProductivity_ProductivityType">
+            <End Role="ProductivityType" EntitySet="ProductivityType" />
+            <End Role="OperationProductivity" EntitySet="OperationProductivity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationReopsitory_OperationRepositoryData" Association="Self.FK_OperationReopsitory_OperationRepositoryData">
+            <End Role="OperationRepositoryData" EntitySet="OperationRepositoryData" />
+            <End Role="OperationReopsitory" EntitySet="OperationReopsitory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationReopsitory_Product" Association="Self.FK_OperationReopsitory_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OperationReopsitory" EntitySet="OperationReopsitory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationRepositoryData_OperationEmployeeCareer" Association="Self.FK_OperationRepositoryData_OperationEmployeeCareer">
+            <End Role="OperationEmployeeCareer" EntitySet="OperationEmployeeCareer" />
+            <End Role="OperationRepositoryData" EntitySet="OperationRepositoryData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcurementOfficials_Office_Employee" Association="Self.FK_ProcurementOfficials_Office_Employee">
+            <End Role="Office_Employee" EntitySet="Office_Employee" />
+            <End Role="ProcurementOfficials" EntitySet="ProcurementOfficials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductCategory" Association="Self.FK_Product_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Suppliers" Association="Self.FK_Product_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_OrderStatus" Association="Self.FK_PurchaseOrder_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_ProcurementOfficials" Association="Self.FK_PurchaseOrder_ProcurementOfficials">
+            <End Role="ProcurementOfficials" EntitySet="ProcurementOfficials" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_Suppliers" Association="Self.FK_PurchaseOrder_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderItems_Product1" Association="Self.FK_PurchaseOrderItems_Product1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PurchaseOrderItems" EntitySet="PurchaseOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderItems_PurchaseOrder" Association="Self.FK_PurchaseOrderItems_PurchaseOrder">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+            <End Role="PurchaseOrderItems" EntitySet="PurchaseOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RunTimes_OperationEquipment" Association="Self.FK_RunTimes_OperationEquipment">
+            <End Role="OperationEquipment" EntitySet="OperationEquipment" />
+            <End Role="RunTimes" EntitySet="RunTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Suppliers_SupplierCategory" Association="Self.FK_Suppliers_SupplierCategory">
+            <End Role="SupplierCategory" EntitySet="SupplierCategory" />
+            <End Role="Suppliers" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempPurchaseOrder_OrderStatus" Association="Self.FK_TempPurchaseOrder_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="TempPurchaseOrder" EntitySet="TempPurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempPurchaseOrder_ProcurementOfficials" Association="Self.FK_TempPurchaseOrder_ProcurementOfficials">
+            <End Role="ProcurementOfficials" EntitySet="ProcurementOfficials" />
+            <End Role="TempPurchaseOrder" EntitySet="TempPurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempPurchaseOrder_Suppliers" Association="Self.FK_TempPurchaseOrder_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="TempPurchaseOrder" EntitySet="TempPurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempPurchaseOrderItems_Product" Association="Self.FK_TempPurchaseOrderItems_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="TempPurchaseOrderItems" EntitySet="TempPurchaseOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempPurchaseOrderItems_TempPurchaseOrder" Association="Self.FK_TempPurchaseOrderItems_TempPurchaseOrder">
+            <End Role="TempPurchaseOrder" EntitySet="TempPurchaseOrder" />
+            <End Role="TempPurchaseOrderItems" EntitySet="TempPurchaseOrderItems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TamerQasalyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ActualProductivity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperationEquipmentID" Type="Int32" />
+          <Property Name="Measurement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalUnitProductivity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ForfeitAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DesciptionForfeitAmount" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NetAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+          <Property Name="TransactionTime" Type="Time" Precision="7" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OperationEquipment" Relationship="Self.FK_ActualProductivity_OperationEquipment" FromRole="ActualProductivity" ToRole="OperationEquipment" />
+        </EntityType>
+        <EntityType Name="CalculationMethod">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OperationEquipments" Relationship="Self.FK_OperationEquipment_CalculationMethod" FromRole="CalculationMethod" ToRole="OperationEquipment" />
+        </EntityType>
+        <EntityType Name="DependencyEquipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Equipments" Relationship="Self.FK_Equipment_DependencyEquipment" FromRole="DependencyEquipment" ToRole="Equipment" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="EquipmentTypeID" Type="Int16" />
+          <Property Name="DependencyID" Type="Int16" />
+          <Property Name="Code" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="Barcode" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ChassisNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DependencyEquipment" Relationship="Self.FK_Equipment_DependencyEquipment" FromRole="Equipment" ToRole="DependencyEquipment" />
+          <NavigationProperty Name="EquipmentType" Relationship="Self.FK_Equipment_EquipmentType" FromRole="Equipment" ToRole="EquipmentType" />
+          <NavigationProperty Name="EquipmentDefaultMeasurementType_Equipment" Relationship="Self.FK_EquipmentDefaultMeasurementType_Equipment_Equipment" FromRole="Equipment" ToRole="EquipmentDefaultMeasurementType_Equipment" />
+          <NavigationProperty Name="OperationEquipments" Relationship="Self.FK_OperationEquipment_Equipment" FromRole="Equipment" ToRole="OperationEquipment" />
+        </EntityType>
+        <EntityType Name="EquipmentDefaultMeasurementType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EquipmentDefaultMeasurementType_Equipment" Relationship="Self.FK_EquipmentDefaultMeasurementType_Equipment_EquipmentDefaultMeasurementType" FromRole="EquipmentDefaultMeasurementType" ToRole="EquipmentDefaultMeasurementType_Equipment" />
+        </EntityType>
+        <EntityType Name="EquipmentDefaultMeasurementType_Equipment">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+            <PropertyRef Name="EquipmentDefaultMeasurementTypeID" />
+          </Key>
+          <Property Name="EquipmentID" Type="Int32" Nullable="false" />
+          <Property Name="EquipmentDefaultMeasurementTypeID" Type="Int16" Nullable="false" />
+          <Property Name="Measure1" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Measure2" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Measure3" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Measure4" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_EquipmentDefaultMeasurementType_Equipment_Equipment" FromRole="EquipmentDefaultMeasurementType_Equipment" ToRole="Equipment" />
+          <NavigationProperty Name="EquipmentDefaultMeasurementType" Relationship="Self.FK_EquipmentDefaultMeasurementType_Equipment_EquipmentDefaultMeasurementType" FromRole="EquipmentDefaultMeasurementType_Equipment" ToRole="EquipmentDefaultMeasurementType" />
+        </EntityType>
+        <EntityType Name="EquipmentType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Equipments" Relationship="Self.FK_Equipment_EquipmentType" FromRole="EquipmentType" ToRole="Equipment" />
+        </EntityType>
+        <EntityType Name="MainRepository">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_MainRepository_Product" FromRole="MainRepository" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Office_Career">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CareerTypeID" Type="Int16" />
+          <Property Name="isSysUser" Type="Boolean" />
+          <Property Name="isSysAdmin" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Office_CareerType" Relationship="Self.FK_Office_Career_Office_CareerType" FromRole="Office_Career" ToRole="Office_CareerType" />
+          <NavigationProperty Name="Office_Employee" Relationship="Self.FK_Office_Employee_Office_Career" FromRole="Office_Career" ToRole="Office_Employee" />
+        </EntityType>
+        <EntityType Name="Office_CareerType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Office_Career" Relationship="Self.FK_Office_Career_Office_CareerType" FromRole="Office_CareerType" ToRole="Office_Career" />
+        </EntityType>
+        <EntityType Name="Office_Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CareerID" Type="Int16" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NationalNumber" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="Salary" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Office_Career" Relationship="Self.FK_Office_Employee_Office_Career" FromRole="Office_Employee" ToRole="Office_Career" />
+          <NavigationProperty Name="ProcurementOfficial" Relationship="Self.FK_ProcurementOfficials_Office_Employee" FromRole="Office_Employee" ToRole="ProcurementOfficials" />
+        </EntityType>
+        <EntityType Name="OperationCareer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Decription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OperationEmployeeCareers" Relationship="Self.FK_OperationEmployeeCareer_OperationCareer" FromRole="OperationCareer" ToRole="OperationEmployeeCareer" />
+        </EntityType>
+        <EntityType Name="OperationEmployee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NationalNumber" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Salary" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="OperationEmployeeCareers" Relationship="Self.FK_OperationEmployeeCareer_OperationEmployee" FromRole="OperationEmployee" ToRole="OperationEmployeeCareer" />
+        </EntityType>
+        <EntityType Name="OperationEmployeeCareer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GeneralDataID" Type="Int32" />
+          <Property Name="Employee" Type="Int16" />
+          <Property Name="Career" Type="Int16" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="OperationCareer" Relationship="Self.FK_OperationEmployeeCareer_OperationCareer" FromRole="OperationEmployeeCareer" ToRole="OperationCareer" />
+          <NavigationProperty Name="OperationEmployee" Relationship="Self.FK_OperationEmployeeCareer_OperationEmployee" FromRole="OperationEmployeeCareer" ToRole="OperationEmployee" />
+          <NavigationProperty Name="OperationGeneralData" Relationship="Self.FK_OperationEmployeeCareer_OperationGeneralData" FromRole="OperationEmployeeCareer" ToRole="OperationGeneralData" />
+          <NavigationProperty Name="OperationRepositoryDatas" Relationship="Self.FK_OperationRepositoryData_OperationEmployeeCareer" FromRole="OperationEmployeeCareer" ToRole="OperationRepositoryData" />
+        </EntityType>
+        <EntityType Name="OperationEquipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="OperationID" Type="Int32" />
+          <Property Name="EquipmentID" Type="Int32" />
+          <Property Name="CalculationMethodID" Type="Int16" />
+          <Property Name="AgreementDate" Type="DateTime" Precision="3" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Decription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ActualProductivities" Relationship="Self.FK_ActualProductivity_OperationEquipment" FromRole="OperationEquipment" ToRole="ActualProductivity" />
+          <NavigationProperty Name="CalculationMethod" Relationship="Self.FK_OperationEquipment_CalculationMethod" FromRole="OperationEquipment" ToRole="CalculationMethod" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_OperationEquipment_Equipment" FromRole="OperationEquipment" ToRole="Equipment" />
+          <NavigationProperty Name="OperationGeneralData" Relationship="Self.FK_OperationEquipment_OperationGeneralData" FromRole="OperationEquipment" ToRole="OperationGeneralData" />
+          <NavigationProperty Name="RunTimes" Relationship="Self.FK_RunTimes_OperationEquipment" FromRole="OperationEquipment" ToRole="RunTimes" />
+        </EntityType>
+        <EntityType Name="OperationGeneralData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperationName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OperaionLocation" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OperationEmployeeCareers" Relationship="Self.FK_OperationEmployeeCareer_OperationGeneralData" FromRole="OperationGeneralData" ToRole="OperationEmployeeCareer" />
+          <NavigationProperty Name="OperationEquipments" Relationship="Self.FK_OperationEquipment_OperationGeneralData" FromRole="OperationGeneralData" ToRole="OperationEquipment" />
+          <NavigationProperty Name="OperationProductivities" Relationship="Self.FK_OperationProductivity_OperationGeneralData" FromRole="OperationGeneralData" ToRole="OperationProductivity" />
+        </EntityType>
+        <EntityType Name="OperationProductivity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperationGeneralDataID" Type="Int32" />
+          <Property Name="ProductivityTypeID" Type="Int16" />
+          <Property Name="EngineeringAssessment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EngineeringAssessment2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EngineeringAssessment3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EngineeringAssessment4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OperationGeneralData" Relationship="Self.FK_OperationProductivity_OperationGeneralData" FromRole="OperationProductivity" ToRole="OperationGeneralData" />
+          <NavigationProperty Name="ProductivityType" Relationship="Self.FK_OperationProductivity_ProductivityType" FromRole="OperationProductivity" ToRole="ProductivityType" />
+        </EntityType>
+        <EntityType Name="OperationReopsitory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RepoID" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Quantity" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="OperationRepositoryData" Relationship="Self.FK_OperationReopsitory_OperationRepositoryData" FromRole="OperationReopsitory" ToRole="OperationRepositoryData" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_OperationReopsitory_Product" FromRole="OperationReopsitory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="OperationRepositoryData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StorekeeperID" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OperationEmployeeCareer" Relationship="Self.FK_OperationRepositoryData_OperationEmployeeCareer" FromRole="OperationRepositoryData" ToRole="OperationEmployeeCareer" />
+          <NavigationProperty Name="OperationReopsitories" Relationship="Self.FK_OperationReopsitory_OperationRepositoryData" FromRole="OperationRepositoryData" ToRole="OperationReopsitory" />
+        </EntityType>
+        <EntityType Name="OrderStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK_PurchaseOrder_OrderStatus" FromRole="OrderStatus" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="TempPurchaseOrders" Relationship="Self.FK_TempPurchaseOrder_OrderStatus" FromRole="OrderStatus" ToRole="TempPurchaseOrder" />
+        </EntityType>
+        <EntityType Name="ProcurementOfficial">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int16" Nullable="false" />
+          <Property Name="AddedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Office_Employee" Relationship="Self.FK_ProcurementOfficials_Office_Employee" FromRole="ProcurementOfficials" ToRole="Office_Employee" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK_PurchaseOrder_ProcurementOfficials" FromRole="ProcurementOfficials" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="TempPurchaseOrders" Relationship="Self.FK_TempPurchaseOrder_ProcurementOfficials" FromRole="ProcurementOfficials" ToRole="TempPurchaseOrder" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Barcode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCategoryID" Type="Int16" />
+          <Property Name="ProductionCompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultSupplierID" Type="Int32" />
+          <Property Name="PurchasePrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MainRepositories" Relationship="Self.FK_MainRepository_Product" FromRole="Product" ToRole="MainRepository" />
+          <NavigationProperty Name="OperationReopsitories" Relationship="Self.FK_OperationReopsitory_Product" FromRole="Product" ToRole="OperationReopsitory" />
+          <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Product_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Product_Suppliers" FromRole="Product" ToRole="Suppliers" />
+          <NavigationProperty Name="PurchaseOrderItems" Relationship="Self.FK_PurchaseOrderItems_Product1" FromRole="Product" ToRole="PurchaseOrderItems" />
+          <NavigationProperty Name="TempPurchaseOrderItems" Relationship="Self.FK_TempPurchaseOrderItems_Product" FromRole="Product" ToRole="TempPurchaseOrderItems" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_ProductCategory" FromRole="ProductCategory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductivityType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OperationProductivities" Relationship="Self.FK_OperationProductivity_ProductivityType" FromRole="ProductivityType" ToRole="OperationProductivity" />
+        </EntityType>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierID" Type="Int32" />
+          <Property Name="OrderStatusID" Type="Int16" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="ProcurementOfficialsID" Type="Int16" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderStatu" Relationship="Self.FK_PurchaseOrder_OrderStatus" FromRole="PurchaseOrder" ToRole="OrderStatus" />
+          <NavigationProperty Name="ProcurementOfficial" Relationship="Self.FK_PurchaseOrder_ProcurementOfficials" FromRole="PurchaseOrder" ToRole="ProcurementOfficials" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_PurchaseOrder_Suppliers" FromRole="PurchaseOrder" ToRole="Suppliers" />
+          <NavigationProperty Name="PurchaseOrderItems" Relationship="Self.FK_PurchaseOrderItems_PurchaseOrder" FromRole="PurchaseOrder" ToRole="PurchaseOrderItems" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseOrderID" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Quantity" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PurchasePrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_PurchaseOrderItems_Product1" FromRole="PurchaseOrderItems" ToRole="Product" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK_PurchaseOrderItems_PurchaseOrder" FromRole="PurchaseOrderItems" ToRole="PurchaseOrder" />
+        </EntityType>
+        <EntityType Name="RunTime">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperationEquipmentID" Type="Int32" />
+          <Property Name="CurrentDate" Type="DateTime" Precision="3" />
+          <Property Name="StartTime" Type="Time" Precision="7" />
+          <Property Name="EndTime" Type="Time" Precision="7" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OperationEquipment" Relationship="Self.FK_RunTimes_OperationEquipment" FromRole="RunTimes" ToRole="OperationEquipment" />
+        </EntityType>
+        <EntityType Name="SupplierCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK_Suppliers_SupplierCategory" FromRole="SupplierCategory" ToRole="Suppliers" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <Property Name="SupplierCategoryID" Type="Int16" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNationalNumber" Type="String" MaxLength="14" FixedLength="true" Unicode="true" />
+          <Property Name="ContactTitle" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="RemainderAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DateRemainderAmount" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="MAXDebtAmount" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Suppliers" FromRole="Suppliers" ToRole="Product" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK_PurchaseOrder_Suppliers" FromRole="Suppliers" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="SupplierCategory" Relationship="Self.FK_Suppliers_SupplierCategory" FromRole="Suppliers" ToRole="SupplierCategory" />
+          <NavigationProperty Name="TempPurchaseOrders" Relationship="Self.FK_TempPurchaseOrder_Suppliers" FromRole="Suppliers" ToRole="TempPurchaseOrder" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TempPurchaseOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierID" Type="Int32" />
+          <Property Name="OrderStatusID" Type="Int16" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="ProcurementOfficialsID" Type="Int16" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderStatu" Relationship="Self.FK_TempPurchaseOrder_OrderStatus" FromRole="TempPurchaseOrder" ToRole="OrderStatus" />
+          <NavigationProperty Name="ProcurementOfficial" Relationship="Self.FK_TempPurchaseOrder_ProcurementOfficials" FromRole="TempPurchaseOrder" ToRole="ProcurementOfficials" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_TempPurchaseOrder_Suppliers" FromRole="TempPurchaseOrder" ToRole="Suppliers" />
+          <NavigationProperty Name="TempPurchaseOrderItems" Relationship="Self.FK_TempPurchaseOrderItems_TempPurchaseOrder" FromRole="TempPurchaseOrder" ToRole="TempPurchaseOrderItems" />
+        </EntityType>
+        <EntityType Name="TempPurchaseOrderItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseOrderID" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Quantity" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PurchasePrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_TempPurchaseOrderItems_Product" FromRole="TempPurchaseOrderItems" ToRole="Product" />
+          <NavigationProperty Name="TempPurchaseOrder" Relationship="Self.FK_TempPurchaseOrderItems_TempPurchaseOrder" FromRole="TempPurchaseOrderItems" ToRole="TempPurchaseOrder" />
+        </EntityType>
+        <Association Name="FK_ActualProductivity_OperationEquipment">
+          <End Role="OperationEquipment" Type="Self.OperationEquipment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ActualProductivity" Type="Self.ActualProductivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationEquipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ActualProductivity">
+              <PropertyRef Name="OperationEquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationEquipment_CalculationMethod">
+          <End Role="CalculationMethod" Type="Self.CalculationMethod" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationEquipment" Type="Self.OperationEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CalculationMethod">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationEquipment">
+              <PropertyRef Name="CalculationMethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_DependencyEquipment">
+          <End Role="DependencyEquipment" Type="Self.DependencyEquipment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DependencyEquipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="DependencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_EquipmentType">
+          <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="EquipmentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentDefaultMeasurementType_Equipment_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EquipmentDefaultMeasurementType_Equipment" Type="Self.EquipmentDefaultMeasurementType_Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EquipmentDefaultMeasurementType_Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationEquipment_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationEquipment" Type="Self.OperationEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationEquipment">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentDefaultMeasurementType_Equipment_EquipmentDefaultMeasurementType">
+          <End Role="EquipmentDefaultMeasurementType" Type="Self.EquipmentDefaultMeasurementType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EquipmentDefaultMeasurementType_Equipment" Type="Self.EquipmentDefaultMeasurementType_Equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentDefaultMeasurementType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EquipmentDefaultMeasurementType_Equipment">
+              <PropertyRef Name="EquipmentDefaultMeasurementTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainRepository_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MainRepository" Type="Self.MainRepository" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MainRepository">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Office_Career_Office_CareerType">
+          <End Role="Office_CareerType" Type="Self.Office_CareerType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Office_Career" Type="Self.Office_Career" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office_CareerType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Office_Career">
+              <PropertyRef Name="CareerTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Office_Employee_Office_Career">
+          <End Role="Office_Career" Type="Self.Office_Career" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Office_Employee" Type="Self.Office_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office_Career">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Office_Employee">
+              <PropertyRef Name="CareerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcurementOfficials_Office_Employee">
+          <End Role="Office_Employee" Type="Self.Office_Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProcurementOfficials" Type="Self.ProcurementOfficial" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Office_Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProcurementOfficials">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationEmployeeCareer_OperationCareer">
+          <End Role="OperationCareer" Type="Self.OperationCareer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationEmployeeCareer" Type="Self.OperationEmployeeCareer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationCareer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationEmployeeCareer">
+              <PropertyRef Name="Career" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationEmployeeCareer_OperationEmployee">
+          <End Role="OperationEmployee" Type="Self.OperationEmployee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationEmployeeCareer" Type="Self.OperationEmployeeCareer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationEmployee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationEmployeeCareer">
+              <PropertyRef Name="Employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationEmployeeCareer_OperationGeneralData">
+          <End Role="OperationGeneralData" Type="Self.OperationGeneralData" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationEmployeeCareer" Type="Self.OperationEmployeeCareer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationGeneralData">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationEmployeeCareer">
+              <PropertyRef Name="GeneralDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationRepositoryData_OperationEmployeeCareer">
+          <End Role="OperationEmployeeCareer" Type="Self.OperationEmployeeCareer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationRepositoryData" Type="Self.OperationRepositoryData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationEmployeeCareer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationRepositoryData">
+              <PropertyRef Name="StorekeeperID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationEquipment_OperationGeneralData">
+          <End Role="OperationGeneralData" Type="Self.OperationGeneralData" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationEquipment" Type="Self.OperationEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationGeneralData">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationEquipment">
+              <PropertyRef Name="OperationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RunTimes_OperationEquipment">
+          <End Role="OperationEquipment" Type="Self.OperationEquipment" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RunTimes" Type="Self.RunTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationEquipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RunTimes">
+              <PropertyRef Name="OperationEquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationProductivity_OperationGeneralData">
+          <End Role="OperationGeneralData" Type="Self.OperationGeneralData" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationProductivity" Type="Self.OperationProductivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationGeneralData">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationProductivity">
+              <PropertyRef Name="OperationGeneralDataID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationProductivity_ProductivityType">
+          <End Role="ProductivityType" Type="Self.ProductivityType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationProductivity" Type="Self.OperationProductivity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductivityType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationProductivity">
+              <PropertyRef Name="ProductivityTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationReopsitory_OperationRepositoryData">
+          <End Role="OperationRepositoryData" Type="Self.OperationRepositoryData" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationReopsitory" Type="Self.OperationReopsitory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationRepositoryData">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationReopsitory">
+              <PropertyRef Name="RepoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperationReopsitory_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OperationReopsitory" Type="Self.OperationReopsitory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OperationReopsitory">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatu" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempPurchaseOrder_OrderStatus">
+          <End Role="OrderStatus" Type="Self.OrderStatu" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TempPurchaseOrder" Type="Self.TempPurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TempPurchaseOrder">
+              <PropertyRef Name="OrderStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_ProcurementOfficials">
+          <End Role="ProcurementOfficials" Type="Self.ProcurementOfficial" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcurementOfficials">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="ProcurementOfficialsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempPurchaseOrder_ProcurementOfficials">
+          <End Role="ProcurementOfficials" Type="Self.ProcurementOfficial" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TempPurchaseOrder" Type="Self.TempPurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProcurementOfficials">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="TempPurchaseOrder">
+              <PropertyRef Name="ProcurementOfficialsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Suppliers">
+          <End Role="Suppliers" Type="Self.Supplier" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="DefaultSupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderItems_Product1">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PurchaseOrderItems" Type="Self.PurchaseOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PurchaseOrderItems">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempPurchaseOrderItems_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TempPurchaseOrderItems" Type="Self.TempPurchaseOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TempPurchaseOrderItems">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrder_Suppliers">
+          <End Role="Suppliers" Type="Self.Supplier" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseOrderItems_PurchaseOrder">
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
+          <End Role="PurchaseOrderItems" Type="Self.PurchaseOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PurchaseOrderItems">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Suppliers_SupplierCategory">
+          <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Suppliers" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Suppliers">
+              <PropertyRef Name="SupplierCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempPurchaseOrder_Suppliers">
+          <End Role="Suppliers" Type="Self.Supplier" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TempPurchaseOrder" Type="Self.TempPurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suppliers">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="TempPurchaseOrder">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempPurchaseOrderItems_TempPurchaseOrder">
+          <End Role="TempPurchaseOrder" Type="Self.TempPurchaseOrder" Multiplicity="0..1" />
+          <End Role="TempPurchaseOrderItems" Type="Self.TempPurchaseOrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TempPurchaseOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TempPurchaseOrderItems">
+              <PropertyRef Name="PurchaseOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TamerQasalyDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ActualProductivities" EntityType="Self.ActualProductivity" />
+          <EntitySet Name="CalculationMethods" EntityType="Self.CalculationMethod" />
+          <EntitySet Name="DependencyEquipments" EntityType="Self.DependencyEquipment" />
+          <EntitySet Name="Equipments" EntityType="Self.Equipment" />
+          <EntitySet Name="EquipmentDefaultMeasurementTypes" EntityType="Self.EquipmentDefaultMeasurementType" />
+          <EntitySet Name="EquipmentDefaultMeasurementType_Equipment" EntityType="Self.EquipmentDefaultMeasurementType_Equipment" />
+          <EntitySet Name="EquipmentTypes" EntityType="Self.EquipmentType" />
+          <EntitySet Name="MainRepositories" EntityType="Self.MainRepository" />
+          <EntitySet Name="Office_Career" EntityType="Self.Office_Career" />
+          <EntitySet Name="Office_CareerType" EntityType="Self.Office_CareerType" />
+          <EntitySet Name="Office_Employee" EntityType="Self.Office_Employee" />
+          <EntitySet Name="OperationCareers" EntityType="Self.OperationCareer" />
+          <EntitySet Name="OperationEmployees" EntityType="Self.OperationEmployee" />
+          <EntitySet Name="OperationEmployeeCareers" EntityType="Self.OperationEmployeeCareer" />
+          <EntitySet Name="OperationEquipments" EntityType="Self.OperationEquipment" />
+          <EntitySet Name="OperationGeneralDatas" EntityType="Self.OperationGeneralData" />
+          <EntitySet Name="OperationProductivities" EntityType="Self.OperationProductivity" />
+          <EntitySet Name="OperationReopsitories" EntityType="Self.OperationReopsitory" />
+          <EntitySet Name="OperationRepositoryDatas" EntityType="Self.OperationRepositoryData" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatu" />
+          <EntitySet Name="ProcurementOfficials" EntityType="Self.ProcurementOfficial" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductCategories" EntityType="Self.ProductCategory" />
+          <EntitySet Name="ProductivityTypes" EntityType="Self.ProductivityType" />
+          <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrder" />
+          <EntitySet Name="PurchaseOrderItems" EntityType="Self.PurchaseOrderItem" />
+          <EntitySet Name="RunTimes" EntityType="Self.RunTime" />
+          <EntitySet Name="SupplierCategories" EntityType="Self.SupplierCategory" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TempPurchaseOrders" EntityType="Self.TempPurchaseOrder" />
+          <EntitySet Name="TempPurchaseOrderItems" EntityType="Self.TempPurchaseOrderItem" />
+          <AssociationSet Name="FK_ActualProductivity_OperationEquipment" Association="Self.FK_ActualProductivity_OperationEquipment">
+            <End Role="OperationEquipment" EntitySet="OperationEquipments" />
+            <End Role="ActualProductivity" EntitySet="ActualProductivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationEquipment_CalculationMethod" Association="Self.FK_OperationEquipment_CalculationMethod">
+            <End Role="CalculationMethod" EntitySet="CalculationMethods" />
+            <End Role="OperationEquipment" EntitySet="OperationEquipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_DependencyEquipment" Association="Self.FK_Equipment_DependencyEquipment">
+            <End Role="DependencyEquipment" EntitySet="DependencyEquipments" />
+            <End Role="Equipment" EntitySet="Equipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_EquipmentType" Association="Self.FK_Equipment_EquipmentType">
+            <End Role="EquipmentType" EntitySet="EquipmentTypes" />
+            <End Role="Equipment" EntitySet="Equipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentDefaultMeasurementType_Equipment_Equipment" Association="Self.FK_EquipmentDefaultMeasurementType_Equipment_Equipment">
+            <End Role="Equipment" EntitySet="Equipments" />
+            <End Role="EquipmentDefaultMeasurementType_Equipment" EntitySet="EquipmentDefaultMeasurementType_Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationEquipment_Equipment" Association="Self.FK_OperationEquipment_Equipment">
+            <End Role="Equipment" EntitySet="Equipments" />
+            <End Role="OperationEquipment" EntitySet="OperationEquipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentDefaultMeasurementType_Equipment_EquipmentDefaultMeasurementType" Association="Self.FK_EquipmentDefaultMeasurementType_Equipment_EquipmentDefaultMeasurementType">
+            <End Role="EquipmentDefaultMeasurementType" EntitySet="EquipmentDefaultMeasurementTypes" />
+            <End Role="EquipmentDefaultMeasurementType_Equipment" EntitySet="EquipmentDefaultMeasurementType_Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainRepository_Product" Association="Self.FK_MainRepository_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="MainRepository" EntitySet="MainRepositories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Office_Career_Office_CareerType" Association="Self.FK_Office_Career_Office_CareerType">
+            <End Role="Office_CareerType" EntitySet="Office_CareerType" />
+            <End Role="Office_Career" EntitySet="Office_Career" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Office_Employee_Office_Career" Association="Self.FK_Office_Employee_Office_Career">
+            <End Role="Office_Career" EntitySet="Office_Career" />
+            <End Role="Office_Employee" EntitySet="Office_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcurementOfficials_Office_Employee" Association="Self.FK_ProcurementOfficials_Office_Employee">
+            <End Role="Office_Employee" EntitySet="Office_Employee" />
+            <End Role="ProcurementOfficials" EntitySet="ProcurementOfficials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationEmployeeCareer_OperationCareer" Association="Self.FK_OperationEmployeeCareer_OperationCareer">
+            <End Role="OperationCareer" EntitySet="OperationCareers" />
+            <End Role="OperationEmployeeCareer" EntitySet="OperationEmployeeCareers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationEmployeeCareer_OperationEmployee" Association="Self.FK_OperationEmployeeCareer_OperationEmployee">
+            <End Role="OperationEmployee" EntitySet="OperationEmployees" />
+            <End Role="OperationEmployeeCareer" EntitySet="OperationEmployeeCareers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationEmployeeCareer_OperationGeneralData" Association="Self.FK_OperationEmployeeCareer_OperationGeneralData">
+            <End Role="OperationGeneralData" EntitySet="OperationGeneralDatas" />
+            <End Role="OperationEmployeeCareer" EntitySet="OperationEmployeeCareers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationRepositoryData_OperationEmployeeCareer" Association="Self.FK_OperationRepositoryData_OperationEmployeeCareer">
+            <End Role="OperationEmployeeCareer" EntitySet="OperationEmployeeCareers" />
+            <End Role="OperationRepositoryData" EntitySet="OperationRepositoryDatas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationEquipment_OperationGeneralData" Association="Self.FK_OperationEquipment_OperationGeneralData">
+            <End Role="OperationGeneralData" EntitySet="OperationGeneralDatas" />
+            <End Role="OperationEquipment" EntitySet="OperationEquipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RunTimes_OperationEquipment" Association="Self.FK_RunTimes_OperationEquipment">
+            <End Role="OperationEquipment" EntitySet="OperationEquipments" />
+            <End Role="RunTimes" EntitySet="RunTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationProductivity_OperationGeneralData" Association="Self.FK_OperationProductivity_OperationGeneralData">
+            <End Role="OperationGeneralData" EntitySet="OperationGeneralDatas" />
+            <End Role="OperationProductivity" EntitySet="OperationProductivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationProductivity_ProductivityType" Association="Self.FK_OperationProductivity_ProductivityType">
+            <End Role="ProductivityType" EntitySet="ProductivityTypes" />
+            <End Role="OperationProductivity" EntitySet="OperationProductivities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationReopsitory_OperationRepositoryData" Association="Self.FK_OperationReopsitory_OperationRepositoryData">
+            <End Role="OperationRepositoryData" EntitySet="OperationRepositoryDatas" />
+            <End Role="OperationReopsitory" EntitySet="OperationReopsitories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperationReopsitory_Product" Association="Self.FK_OperationReopsitory_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OperationReopsitory" EntitySet="OperationReopsitories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_OrderStatus" Association="Self.FK_PurchaseOrder_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempPurchaseOrder_OrderStatus" Association="Self.FK_TempPurchaseOrder_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="TempPurchaseOrder" EntitySet="TempPurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_ProcurementOfficials" Association="Self.FK_PurchaseOrder_ProcurementOfficials">
+            <End Role="ProcurementOfficials" EntitySet="ProcurementOfficials" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempPurchaseOrder_ProcurementOfficials" Association="Self.FK_TempPurchaseOrder_ProcurementOfficials">
+            <End Role="ProcurementOfficials" EntitySet="ProcurementOfficials" />
+            <End Role="TempPurchaseOrder" EntitySet="TempPurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductCategory" Association="Self.FK_Product_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Suppliers" Association="Self.FK_Product_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderItems_Product1" Association="Self.FK_PurchaseOrderItems_Product1">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="PurchaseOrderItems" EntitySet="PurchaseOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempPurchaseOrderItems_Product" Association="Self.FK_TempPurchaseOrderItems_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="TempPurchaseOrderItems" EntitySet="TempPurchaseOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrder_Suppliers" Association="Self.FK_PurchaseOrder_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseOrderItems_PurchaseOrder" Association="Self.FK_PurchaseOrderItems_PurchaseOrder">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+            <End Role="PurchaseOrderItems" EntitySet="PurchaseOrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Suppliers_SupplierCategory" Association="Self.FK_Suppliers_SupplierCategory">
+            <End Role="SupplierCategory" EntitySet="SupplierCategories" />
+            <End Role="Suppliers" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempPurchaseOrder_Suppliers" Association="Self.FK_TempPurchaseOrder_Suppliers">
+            <End Role="Suppliers" EntitySet="Suppliers" />
+            <End Role="TempPurchaseOrder" EntitySet="TempPurchaseOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempPurchaseOrderItems_TempPurchaseOrder" Association="Self.FK_TempPurchaseOrderItems_TempPurchaseOrder">
+            <End Role="TempPurchaseOrder" EntitySet="TempPurchaseOrders" />
+            <End Role="TempPurchaseOrderItems" EntitySet="TempPurchaseOrderItems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TamerQasalyDBModelStoreContainer" CdmEntityContainer="TamerQasalyDBEntities">
+          <EntitySetMapping Name="ActualProductivities">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.ActualProductivity">
+              <MappingFragment StoreEntitySet="ActualProductivity">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OperationEquipmentID" ColumnName="OperationEquipmentID" />
+                <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="TotalUnitProductivity" ColumnName="TotalUnitProductivity" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="ForfeitAmount" ColumnName="ForfeitAmount" />
+                <ScalarProperty Name="DesciptionForfeitAmount" ColumnName="DesciptionForfeitAmount" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="TransactionTime" ColumnName="TransactionTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CalculationMethods">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.CalculationMethod">
+              <MappingFragment StoreEntitySet="CalculationMethod">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DependencyEquipments">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.DependencyEquipment">
+              <MappingFragment StoreEntitySet="DependencyEquipment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipments">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EquipmentTypeID" ColumnName="EquipmentTypeID" />
+                <ScalarProperty Name="DependencyID" ColumnName="DependencyID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ChassisNo" ColumnName="ChassisNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentDefaultMeasurementTypes">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.EquipmentDefaultMeasurementType">
+              <MappingFragment StoreEntitySet="EquipmentDefaultMeasurementType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentDefaultMeasurementType_Equipment">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.EquipmentDefaultMeasurementType_Equipment">
+              <MappingFragment StoreEntitySet="EquipmentDefaultMeasurementType_Equipment">
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="EquipmentDefaultMeasurementTypeID" ColumnName="EquipmentDefaultMeasurementTypeID" />
+                <ScalarProperty Name="Measure1" ColumnName="Measure1" />
+                <ScalarProperty Name="Measure2" ColumnName="Measure2" />
+                <ScalarProperty Name="Measure3" ColumnName="Measure3" />
+                <ScalarProperty Name="Measure4" ColumnName="Measure4" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentTypes">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.EquipmentType">
+              <MappingFragment StoreEntitySet="EquipmentType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainRepositories">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.MainRepository">
+              <MappingFragment StoreEntitySet="MainRepository">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Office_Career">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.Office_Career">
+              <MappingFragment StoreEntitySet="Office_Career">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CareerTypeID" ColumnName="CareerTypeID" />
+                <ScalarProperty Name="isSysUser" ColumnName="isSysUser" />
+                <ScalarProperty Name="isSysAdmin" ColumnName="isSysAdmin" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Office_CareerType">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.Office_CareerType">
+              <MappingFragment StoreEntitySet="Office_CareerType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Office_Employee">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.Office_Employee">
+              <MappingFragment StoreEntitySet="Office_Employee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CareerID" ColumnName="CareerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NationalNumber" ColumnName="NationalNumber" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationCareers">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.OperationCareer">
+              <MappingFragment StoreEntitySet="OperationCareer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationEmployees">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.OperationEmployee">
+              <MappingFragment StoreEntitySet="OperationEmployee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NationalNumber" ColumnName="NationalNumber" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationEmployeeCareers">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.OperationEmployeeCareer">
+              <MappingFragment StoreEntitySet="OperationEmployeeCareer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GeneralDataID" ColumnName="GeneralDataID" />
+                <ScalarProperty Name="Employee" ColumnName="Employee" />
+                <ScalarProperty Name="Career" ColumnName="Career" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationEquipments">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.OperationEquipment">
+              <MappingFragment StoreEntitySet="OperationEquipment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OperationID" ColumnName="OperationID" />
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="CalculationMethodID" ColumnName="CalculationMethodID" />
+                <ScalarProperty Name="AgreementDate" ColumnName="AgreementDate" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationGeneralDatas">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.OperationGeneralData">
+              <MappingFragment StoreEntitySet="OperationGeneralData">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OperationName" ColumnName="OperationName" />
+                <ScalarProperty Name="OperaionLocation" ColumnName="OperaionLocation" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationProductivities">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.OperationProductivity">
+              <MappingFragment StoreEntitySet="OperationProductivity">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OperationGeneralDataID" ColumnName="OperationGeneralDataID" />
+                <ScalarProperty Name="ProductivityTypeID" ColumnName="ProductivityTypeID" />
+                <ScalarProperty Name="EngineeringAssessment1" ColumnName="EngineeringAssessment1" />
+                <ScalarProperty Name="EngineeringAssessment2" ColumnName="EngineeringAssessment2" />
+                <ScalarProperty Name="EngineeringAssessment3" ColumnName="EngineeringAssessment3" />
+                <ScalarProperty Name="EngineeringAssessment4" ColumnName="EngineeringAssessment4" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationReopsitories">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.OperationReopsitory">
+              <MappingFragment StoreEntitySet="OperationReopsitory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RepoID" ColumnName="RepoID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationRepositoryDatas">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.OperationRepositoryData">
+              <MappingFragment StoreEntitySet="OperationRepositoryData">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StorekeeperID" ColumnName="StorekeeperID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStatus">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.OrderStatu">
+              <MappingFragment StoreEntitySet="OrderStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcurementOfficials">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.ProcurementOfficial">
+              <MappingFragment StoreEntitySet="ProcurementOfficials">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="AddedDate" ColumnName="AddedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="ProductCategoryID" ColumnName="ProductCategoryID" />
+                <ScalarProperty Name="ProductionCompanyName" ColumnName="ProductionCompanyName" />
+                <ScalarProperty Name="DefaultSupplierID" ColumnName="DefaultSupplierID" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategories">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductivityTypes">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.ProductivityType">
+              <MappingFragment StoreEntitySet="ProductivityType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrders">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.PurchaseOrder">
+              <MappingFragment StoreEntitySet="PurchaseOrder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="ProcurementOfficialsID" ColumnName="ProcurementOfficialsID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderItems">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.PurchaseOrderItem">
+              <MappingFragment StoreEntitySet="PurchaseOrderItems">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RunTimes">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.RunTime">
+              <MappingFragment StoreEntitySet="RunTimes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OperationEquipmentID" ColumnName="OperationEquipmentID" />
+                <ScalarProperty Name="CurrentDate" ColumnName="CurrentDate" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierCategories">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.SupplierCategory">
+              <MappingFragment StoreEntitySet="SupplierCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.Supplier">
+              <MappingFragment StoreEntitySet="Suppliers">
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="SupplierCategoryID" ColumnName="SupplierCategoryID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactNationalNumber" ColumnName="ContactNationalNumber" />
+                <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="RemainderAmount" ColumnName="RemainderAmount" />
+                <ScalarProperty Name="DateRemainderAmount" ColumnName="DateRemainderAmount" />
+                <ScalarProperty Name="MAXDebtAmount" ColumnName="MAXDebtAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TempPurchaseOrders">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.TempPurchaseOrder">
+              <MappingFragment StoreEntitySet="TempPurchaseOrder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="ProcurementOfficialsID" ColumnName="ProcurementOfficialsID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TempPurchaseOrderItems">
+            <EntityTypeMapping TypeName="TamerQasalyDBModel.TempPurchaseOrderItem">
+              <MappingFragment StoreEntitySet="TempPurchaseOrderItems">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PurchaseOrderID" ColumnName="PurchaseOrderID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
