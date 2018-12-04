@@ -51,6 +51,7 @@
             this.btnSave.Size = new System.Drawing.Size(411, 23);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "حفظ";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtDescription
             // 
@@ -89,7 +90,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 12F);
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmOffice_MainCareerTypeAddEdit";

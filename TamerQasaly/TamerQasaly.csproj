@@ -84,6 +84,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DAL\CareerType_DAL.cs" />
+    <Compile Include="Data\Interfaces\ICareerType.cs" />
     <Compile Include="DBModel\ActualProductivity.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -284,6 +286,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
