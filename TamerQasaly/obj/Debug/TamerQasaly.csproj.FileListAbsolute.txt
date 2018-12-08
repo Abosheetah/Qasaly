@@ -125,3 +125,5 @@ H:\TamerQasaly\TamerQasaly\TamerQasaly\obj\Debug\TamerQasaly.exe
 H:\TamerQasaly\TamerQasaly\TamerQasaly\obj\Debug\TamerQasaly.pdb
 H:\TamerQasaly\TamerQasaly\TamerQasaly\obj\Debug\TamerQasaly.MainOffice.frmOffice_MainCareerType.resources
 H:\TamerQasaly\TamerQasaly\TamerQasaly\obj\Debug\TamerQasaly.MainOffice.frmOffice_MainCareerTypeAddEdit.resources
+H:\TamerQasaly\TamerQasaly\TamerQasaly\obj\Debug\TamerQasaly.Views.MainOffice.frmOffice_MainCareer.resources
+H:\TamerQasaly\TamerQasaly\TamerQasaly\obj\Debug\TamerQasaly.Views.MainOffice.frmOffice_MainCareerAddEdit.resources

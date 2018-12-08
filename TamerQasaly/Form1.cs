@@ -13,13 +13,14 @@ using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraBars.Helpers;
 using DevExpress.XtraScheduler;
+using TamerQasaly.Views.MainOffice;
 using TamerQasaly.MainOffice;
 
 namespace TamerQasaly
 {
     public partial class Form1 : RibbonForm
     {
-        frmOffice_MainCareerType frm;
+        
         public Form1()
         {
             InitializeComponent();
@@ -33,7 +34,13 @@ namespace TamerQasaly
 
         private void btnOffice_CareerType_ItemClick(object sender, ItemClickEventArgs e)
         {
-            frm = new frmOffice_MainCareerType();
+            frmOffice_MainCareerType  frm = new frmOffice_MainCareerType();
+            frm.ShowDialog();
+        }
+
+        private void btnOffice_Career_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmOffice_MainCareer frm = new frmOffice_MainCareer();
             frm.ShowDialog();
         }
     }

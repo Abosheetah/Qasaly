@@ -85,116 +85,118 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DAL\CareerType_DAL.cs" />
+    <Compile Include="Data\DAL\Career_DAL.cs" />
+    <Compile Include="Data\Interfaces\ICareer.cs" />
     <Compile Include="Data\Interfaces\ICareerType.cs" />
-    <Compile Include="DBModel\ActualProductivity.cs">
+    <Compile Include="Data\DBModel\ActualProductivity.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\CalculationMethod.cs">
+    <Compile Include="Data\DBModel\CalculationMethod.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\DependencyEquipment.cs">
+    <Compile Include="Data\DBModel\DependencyEquipment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\Equipment.cs">
+    <Compile Include="Data\DBModel\Equipment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\EquipmentDefaultMeasurementType.cs">
+    <Compile Include="Data\DBModel\EquipmentDefaultMeasurementType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\EquipmentDefaultMeasurementType_Equipment.cs">
+    <Compile Include="Data\DBModel\EquipmentDefaultMeasurementType_Equipment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\EquipmentType.cs">
+    <Compile Include="Data\DBModel\EquipmentType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\MainRepository.cs">
+    <Compile Include="Data\DBModel\MainRepository.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\Model1.Context.cs">
+    <Compile Include="Data\DBModel\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\Model1.cs">
+    <Compile Include="Data\DBModel\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\Model1.Designer.cs">
+    <Compile Include="Data\DBModel\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\Office_Career.cs">
+    <Compile Include="Data\DBModel\Office_Career.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\Office_CareerType.cs">
+    <Compile Include="Data\DBModel\Office_CareerType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\Office_Employee.cs">
+    <Compile Include="Data\DBModel\Office_Employee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\OperationCareer.cs">
+    <Compile Include="Data\DBModel\OperationCareer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\OperationEmployee.cs">
+    <Compile Include="Data\DBModel\OperationEmployee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\OperationEmployeeCareer.cs">
+    <Compile Include="Data\DBModel\OperationEmployeeCareer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\OperationEquipment.cs">
+    <Compile Include="Data\DBModel\OperationEquipment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\OperationGeneralData.cs">
+    <Compile Include="Data\DBModel\OperationGeneralData.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\OperationProductivity.cs">
+    <Compile Include="Data\DBModel\OperationProductivity.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\OperationReopsitory.cs">
+    <Compile Include="Data\DBModel\OperationReopsitory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\OperationRepositoryData.cs">
+    <Compile Include="Data\DBModel\OperationRepositoryData.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\OrderStatu.cs">
+    <Compile Include="Data\DBModel\OrderStatu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\ProcurementOfficial.cs">
+    <Compile Include="Data\DBModel\ProcurementOfficial.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\Product.cs">
+    <Compile Include="Data\DBModel\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\ProductCategory.cs">
+    <Compile Include="Data\DBModel\ProductCategory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\ProductivityType.cs">
+    <Compile Include="Data\DBModel\ProductivityType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\PurchaseOrder.cs">
+    <Compile Include="Data\DBModel\PurchaseOrder.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\PurchaseOrderItem.cs">
+    <Compile Include="Data\DBModel\PurchaseOrderItem.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\RunTime.cs">
+    <Compile Include="Data\DBModel\RunTime.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\Supplier.cs">
+    <Compile Include="Data\DBModel\Supplier.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\SupplierCategory.cs">
+    <Compile Include="Data\DBModel\SupplierCategory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\sysdiagram.cs">
+    <Compile Include="Data\DBModel\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\TempPurchaseOrder.cs">
+    <Compile Include="Data\DBModel\TempPurchaseOrder.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\TempPurchaseOrderItem.cs">
+    <Compile Include="Data\DBModel\TempPurchaseOrderItem.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
@@ -203,16 +205,28 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainOffice\frmOffice_MainCareerType.cs">
+    <Compile Include="Views\MainOffice\frmOffice_MainCareer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainOffice\frmOffice_MainCareerType.Designer.cs">
+    <Compile Include="Views\MainOffice\frmOffice_MainCareer.Designer.cs">
+      <DependentUpon>frmOffice_MainCareer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainOffice\frmOffice_MainCareerAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MainOffice\frmOffice_MainCareerAddEdit.Designer.cs">
+      <DependentUpon>frmOffice_MainCareerAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainOffice\frmOffice_MainCareerType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MainOffice\frmOffice_MainCareerType.Designer.cs">
       <DependentUpon>frmOffice_MainCareerType.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainOffice\frmOffice_MainCareerTypeAddEdit.cs">
+    <Compile Include="Views\MainOffice\frmOffice_MainCareerTypeAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainOffice\frmOffice_MainCareerTypeAddEdit.Designer.cs">
+    <Compile Include="Views\MainOffice\frmOffice_MainCareerTypeAddEdit.Designer.cs">
       <DependentUpon>frmOffice_MainCareerTypeAddEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -220,10 +234,16 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainOffice\frmOffice_MainCareerType.resx">
+    <EmbeddedResource Include="Views\MainOffice\frmOffice_MainCareer.resx">
+      <DependentUpon>frmOffice_MainCareer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainOffice\frmOffice_MainCareerAddEdit.resx">
+      <DependentUpon>frmOffice_MainCareerAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainOffice\frmOffice_MainCareerType.resx">
       <DependentUpon>frmOffice_MainCareerType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainOffice\frmOffice_MainCareerTypeAddEdit.resx">
+    <EmbeddedResource Include="Views\MainOffice\frmOffice_MainCareerTypeAddEdit.resx">
       <DependentUpon>frmOffice_MainCareerTypeAddEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -238,11 +258,11 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
-    <EntityDeploy Include="DBModel\Model1.edmx">
+    <EntityDeploy Include="Data\DBModel\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DBModel\Model1.edmx.diagram">
+    <None Include="Data\DBModel\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config">
@@ -275,12 +295,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DBModel\Model1.Context.tt">
+    <Content Include="Data\DBModel\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DBModel\Model1.tt">
+    <Content Include="Data\DBModel\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TamerQasaly.Data.Interfaces;
-using TamerQasaly.DBModel;
+using TamerQasaly.Data.DBModel;
 
 namespace TamerQasaly.Data.DAL
 {
@@ -32,8 +32,16 @@ namespace TamerQasaly.Data.DAL
 
         public int DeleteCareerType(int id)
         {
-            _db.Office_CareerType.Remove(GetCareerType(id));
-            return _db.SaveChanges();
+            bool isExist = _db.Office_Career.Where(i => i.CareerTypeID == id).Any();
+            if (!isExist)
+            {
+                _db.Office_CareerType.Remove(GetCareerType(id));
+                return _db.SaveChanges();
+            }
+            else
+            {
+                return 0;
+            }                        
         }
 
         public Office_CareerType GetCareerType(int key)

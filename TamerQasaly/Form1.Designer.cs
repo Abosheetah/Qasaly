@@ -101,7 +101,7 @@
             this.printItem1 = new DevExpress.XtraScheduler.UI.PrintItem();
             this.printPageSetupItem1 = new DevExpress.XtraScheduler.UI.PrintPageSetupItem();
             this.btnOffice_CareerType = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnOffice_Career = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
@@ -329,7 +329,7 @@
             this.printItem1,
             this.printPageSetupItem1,
             this.btnOffice_CareerType,
-            this.barButtonItem2,
+            this.btnOffice_Career,
             this.barButtonItem3,
             this.barButtonItem4,
             this.barButtonItem5,
@@ -827,11 +827,12 @@
             this.btnOffice_CareerType.Name = "btnOffice_CareerType";
             this.btnOffice_CareerType.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnOffice_CareerType_ItemClick);
             // 
-            // barButtonItem2
+            // btnOffice_Career
             // 
-            this.barButtonItem2.Caption = "barButtonItem2";
-            this.barButtonItem2.Id = 104;
-            this.barButtonItem2.Name = "barButtonItem2";
+            this.btnOffice_Career.Caption = "الوظائف المكتبية";
+            this.btnOffice_Career.Id = 104;
+            this.btnOffice_Career.Name = "btnOffice_Career";
+            this.btnOffice_Career.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnOffice_Career_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -925,7 +926,7 @@
             this.commonRibbonPageGroup1.ItemLinks.Add(this.openScheduleItem1);
             this.commonRibbonPageGroup1.ItemLinks.Add(this.saveScheduleItem1);
             this.commonRibbonPageGroup1.ItemLinks.Add(this.btnOffice_CareerType);
-            this.commonRibbonPageGroup1.ItemLinks.Add(this.barButtonItem2);
+            this.commonRibbonPageGroup1.ItemLinks.Add(this.btnOffice_Career);
             this.commonRibbonPageGroup1.ItemLinks.Add(this.barButtonItem3);
             this.commonRibbonPageGroup1.ItemLinks.Add(this.barButtonItem4);
             this.commonRibbonPageGroup1.ItemLinks.Add(this.barButtonItem5);
@@ -1119,7 +1120,7 @@
         private DevExpress.XtraScheduler.UI.CommonRibbonPageGroup commonRibbonPageGroup1;
         private DevExpress.XtraScheduler.UI.SchedulerBarController schedulerBarController1;
         private DevExpress.XtraBars.BarButtonItem btnOffice_CareerType;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem btnOffice_Career;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
